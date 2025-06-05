@@ -11,32 +11,24 @@ class TStack {
 
  public:
   TStack() : top(-1) {}
-  bool isEmpty() const { 
-   return top == -1; 
-  }
-  bool isFull() const { 
-   return top == size - 1; 
-  }
-
-  T get() const {
-      if (isEmpty()) {
-          throw std::string("Empty");
-      }
-      return arr[top];
-  }
-
-  void push(const T& item) {
+  bool isEmpty() const { return top == -1; }
+  bool isFull() const { return top == size - 1; }
+  void push(const T& value) {
       if (isFull()) {
           throw std::string("Full");
       }
-      arr[++top] = item;
+      arr[++top] = value;
   }
-
   T pop() {
       if (isEmpty()) {
           throw std::string("Empty");
       }
-      top--;
+      return arr[top--];
+  }
+  T get() const {
+      if (isEmpty()) {
+          throw std::string("Empty");
+      }
       return arr[top];
   }
 };
