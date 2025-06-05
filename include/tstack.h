@@ -5,39 +5,39 @@
 template<typename T, int size>
 class TStack {
  private:
-  T arr[size];
+  T arr[size] = { 100 };
   int top;
+
  public:
-  TStack():top(-1){}
+  TStack() : top(-1) {}
   bool isEmpty() const { 
-    return top == -1; 
+   return top == -1; 
   }
   bool isFull() const { 
-    return top == size - 1; 
+   return top == size - 1; 
   }
+
   T get() const {
-      if (!isEmpty()) {
-          return arr[top]; 
-      } else {
+      if (isEmpty()) {
           throw std::string("Empty");
       }
+      return arr[top];
   }
+
   void push(const T& item) {
-      if (!isFull()) {
-          arr[++top] = item;
-      } else {
+      if (isFull()) {
           throw std::string("Full");
-      } 
+      }
+      arr[++top] = item;
   }
+
   T pop() {
-      if (!isEmpty()) {
-          top--;
-          return arr[top];
-      } else {
+      if (isEmpty()) {
           throw std::string("Empty");
       }
+      top--;
+      return arr[top];
   }
-  
 };
 
 #endif  // INCLUDE_TSTACK_H_
