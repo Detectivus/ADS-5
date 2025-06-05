@@ -29,9 +29,10 @@ class TStack {
           throw std::string("Full");
       } 
   }
-  void pop() {
+  T pop() {
       if (!isEmpty()) {
           top--;
+          return arr[top];
       } else {
           throw std::string("Empty");
       }
