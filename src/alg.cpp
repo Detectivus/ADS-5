@@ -40,7 +40,8 @@ std::string infx2pstfx(const std::string& inf) {
               transferStack.pop();
           }
       } else if (curr == '+' || curr == '-' || curr == '*' || curr == '/') {
-          while (!transferStack.isEmpty() && PriorityOfSymbol(curr) <= PriorityOfSymbol(transferStack.get())) {
+          while (!transferStack.isEmpty() 
+            && PriorityOfSymbol(curr) <= PriorityOfSymbol(transferStack.get())) {
               postfix += transferStack.pop();
               postfix += " ";
           }
@@ -62,7 +63,6 @@ std::string infx2pstfx(const std::string& inf) {
 int eval(const std::string& post) {
   std::string currentNumber;
   TStack<int, 100> NumStack;
-  
   for (int i = 0; i < post.length(); ++i) {
       char currSym = post[i];
       if (isdigit(currSym)) {
