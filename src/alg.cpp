@@ -40,7 +40,7 @@ std::string infx2pstfx(const std::string& inf) {
               transferStack.pop();
           }
       } else if (curr == '+' || curr == '-' || curr == '*' || curr == '/') {
-          while (!transferStack.isEmpty() && priority(curr) <= priority(transferStack.get())) {
+          while (!transferStack.isEmpty() && PriorityOfSymbol(curr) <= PriorityOfSymbol(transferStack.get())) {
               postfix += transferStack.pop();
               postfix += " ";
           }
@@ -66,14 +66,14 @@ int eval(const std::string& post) {
   for (int i = 0; i < post.length(); ++i) {
       char currSym = post[i];
       if (isdigit(currSym)) {
-          currentNumber += curSym;
+          currentNumber += currSym;
       } else if (currSym == ' ') {
           if (!currentNumber.empty()) {
               NumStack.push(stoi(currentNumber));
               currentNumber.clear();
           }
-      } else if (curSym == '+' || curSym == '-'
-        || curSym == '*' || curSym == '/') {
+      } else if (currSym == '+' || currSym == '-'
+        || currSym == '*' || currSym == '/') {
           if (NumStack.isEmpty()) {
               return 0;
           }
