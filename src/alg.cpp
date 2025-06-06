@@ -3,7 +3,7 @@
 #include <map>
 #include "tstack.h"
 
-int PriorityOfSymbol(char symbol) {
+int PrOSym(char symbol) {
   switch (symbol) {
       case '(': return 0;
       case ')': return 1;
@@ -41,7 +41,7 @@ std::string infx2pstfx(const std::string& inf) {
           }
       } else if (curr == '+' || curr == '-' || curr == '*' || curr == '/') {
           while (!transferStack.isEmpty() 
-            && PriorityOfSymbol(curr) <= PriorityOfSymbol(transferStack.get())) {
+            && PrOSym(curr) <= PrOSym(transferStack.get())) {
               postfix += transferStack.pop();
               postfix += " ";
           }
