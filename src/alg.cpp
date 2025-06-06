@@ -40,7 +40,7 @@ std::string infx2pstfx(const std::string& inf) {
               transferStack.pop();
           }
       } else if (curr == '+' || curr == '-' || curr == '*' || curr == '/') {
-          while (!transferStack.isEmpty() 
+          while (!transferStack.isEmpty()
             && PrOSym(curr) <= PrOSym(transferStack.get())) {
               postfix += transferStack.pop();
               postfix += " ";
